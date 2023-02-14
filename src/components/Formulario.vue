@@ -17,7 +17,7 @@
           class="is-flex is-align-items-center is-justify-content-space-between"
         >
           <section>
-            <strong>00:00:00</strong>
+            <strong>{{ tempoEmSegundos }}</strong>
           </section>
           <button class="button" @click="iniciar">
             <span class="icon">
@@ -42,11 +42,21 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "FormularioItem",
+  data() {
+    return {
+      tempoEmSegundos: 0,
+    };
+  },
   methods: {
     iniciar() {
-      console.log("inciando");
+      // inicia a contagem
+      setInterval(() => {
+        console.log("incrementando o contador");
+        this.tempoEmSegundos += 1;
+      }, 1000);
     },
     Finalizar() {
+      // termina a contagem
       console.log("finalizando");
     },
   },
