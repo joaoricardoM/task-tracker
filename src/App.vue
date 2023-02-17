@@ -11,6 +11,7 @@
           :key="index"
           :tarefa="tarefa"
         />
+        <Box> Você não está muito produtivo hoje ;( </Box>
       </div>
     </div>
   </main>
@@ -22,6 +23,7 @@ import BarraLateral from "./components/BarraLateral.vue";
 import FormularioItem from "./components/Formulario.vue";
 import Tarefa from "./components/Tarefa.vue";
 import ITarefa from "./interface/Itarefa";
+import Box from "./components/Box.vue";
 
 export default defineComponent({
   name: "App",
@@ -29,6 +31,7 @@ export default defineComponent({
     BarraLateral,
     FormularioItem,
     Tarefa,
+    Box,
   },
   data() {
     return {
