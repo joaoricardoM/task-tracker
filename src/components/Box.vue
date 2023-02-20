@@ -1,5 +1,5 @@
 <template>
-  <div class="box has-text-weight-bold">
+  <div class="box has-text-weight-bold" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -7,12 +7,15 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-// eslint-disable-next-line vue/multi-word-component-names
-export default defineComponent({ name: "Box" });
+export default defineComponent({
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Box",
+  data() {
+    return {
+      style: {
+        background: "#faf0ca",
+      },
+    };
+  },
+});
 </script>
-
-<style scoped>
-.box {
-  background: #faf0ca;
-}
-</style>
