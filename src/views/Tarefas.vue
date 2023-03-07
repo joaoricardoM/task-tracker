@@ -7,7 +7,7 @@
         :key="index"
         :tarefa="tarefa"
       />
-      <Box> Você não está muito produtivo hoje ;( </Box>
+      <Box v-if="semTarefas"> Você não está muito produtivo hoje ;( </Box>
     </div>
   </div>
 </template>
@@ -15,9 +15,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import FormularioItem from "../components/Formulario.vue";
-import Tarefa from "./components/Tarefa.vue";
+import Tarefa from "../components/Tarefa.vue";
 import ITarefa from "../interface/Itarefa";
-import Box from "./components/Box.vue";
+import Box from "../components/Box.vue";
 
 export default defineComponent({
   name: "App",
@@ -38,6 +38,11 @@ export default defineComponent({
     },
     trocarTema(modoEscuroAtivo: boolean) {
       this.modoEscuroAtivo = modoEscuroAtivo;
+    },
+  },
+  computed: {
+    semTarefas(): boolean {
+      return this.tarefas.length == 0;
     },
   },
 });
