@@ -15,6 +15,22 @@
         <i class="fas fa-lg" :class="iconeBotao"></i>
       </span>
     </button>
+    <nav class="panel mt-5">
+      <ul>
+        <li>
+          <router-link to="/" style="">
+            <i class="fas fa-tasks"></i>
+            Tarefas
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/projetos" style="">
+            <i class="fas fa-projext-diagram"></i>
+            Projetos
+          </router-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -59,5 +75,18 @@ header {
     padding: 2.5rem;
     height: auto;
   }
+}
+
+.panel li {
+  margin: 8px 0;
+}
+.link {
+  color: #fff;
+}
+.link:hover {
+  color: #faf0ca;
+}
+.link.router-link-active {
+  color: #faf0ca;
 }
 </style>
