@@ -34,7 +34,8 @@
 
 <script lang="ts">
 import IProjeto from "@/interface/IProjeto";
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
@@ -54,6 +55,14 @@ export default defineComponent({
       this.projetos.push(projeto);
       this.nomeDoProjeto = "";
     },
+  },
+  setup() {
+    const store = useStore();
+    return {
+      store,
+      // eslint-disable-next-line vue/no-dupe-keys
+      projetos: computed(() => store.state.projetos),
+    };
   },
 });
 </script>
