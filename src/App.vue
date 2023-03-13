@@ -7,21 +7,19 @@
       <BarraLateral @alterarModo="trocarTema" />
     </div>
     <div class="column is-three-quarter conteudo">
-      <RouterView></RouterView>
+      <router-view></router-view>
     </div>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { RouterView } from "vue-router";
 import BarraLateral from "./components/BarraLateral.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     BarraLateral,
-    RouterView,
   },
   data() {
     return {

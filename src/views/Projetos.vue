@@ -3,29 +3,29 @@
     <h1 class="title">Projetos</h1>
     <form @submit.prevent="salvar">
       <div class="field">
-        <label form="nomeDoProjeto" class="label"> Nome Do Projeto </label>
+        <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
         <input
           type="text"
           class="input"
           v-model="nomeDoProjeto"
-          id="nomeDoProjeto"
+          id="nomeDoProjet"
         />
       </div>
       <div class="field">
-        <button class="button" type="submit">salvar</button>
+        <button class="button" type="submit">Salvar</button>
       </div>
     </form>
-    <table class="table is-fullWidth">
+    <table class="table is-fullwidth">
       <thead>
-        <tr v-for="projeto in projetos" :key="projeto.id">
-          <th>{{ projeto.id }}</th>
-          <th>{{ projeto.nome }}</th>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>ID</td>
-          <td>Nome</td>
+        <tr v-for="projeto in projetos" :key="projeto.id">
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.nome }}</td>
         </tr>
       </tbody>
     </table>
@@ -33,9 +33,8 @@
 </template>
 
 <script lang="ts">
-import IProjeto from "@/interface/IProjeto";
+import { useStore } from "@/store";
 import { computed, defineComponent } from "vue";
-import { useStore } from "vuex";
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
@@ -43,16 +42,11 @@ export default defineComponent({
   data() {
     return {
       nomeDoProjeto: "",
-      projetos: [] as IProjeto[],
     };
   },
   methods: {
     salvar() {
-      const projeto: IProjeto = {
-        nome: this.nomeDoProjeto,
-        id: new Date().toISOString(),
-      };
-      this.projetos.push(projeto);
+      this.store.commit("ADICIONA_PROJETO", this.nomeDoProjeto);
       this.nomeDoProjeto = "";
     },
   },
@@ -60,7 +54,6 @@ export default defineComponent({
     const store = useStore();
     return {
       store,
-      // eslint-disable-next-line vue/no-dupe-keys
       projetos: computed(() => store.state.projetos),
     };
   },
@@ -68,6 +61,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
+main {
+  --bg-primary: #fff;
+  --text-primary: #000;
+}
+
+main.modo-escuro {
+  --bg-primary: #2b2d42;
+  --text-primary: #ddd;
+}
 .projetos {
   padding: 1.25rem;
 }

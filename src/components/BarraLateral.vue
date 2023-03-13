@@ -18,13 +18,13 @@
     <nav class="panel mt-5">
       <ul>
         <li>
-          <router-link to="/" style="">
+          <router-link to="/" class="link">
             <i class="fas fa-tasks"></i>
             Tarefas
           </router-link>
         </li>
         <li>
-          <router-link to="/projetos" style="">
+          <router-link to="/projetos" class="link">
             <i class="fas fa-projext-diagram"></i>
             Projetos
           </router-link>
@@ -63,6 +63,13 @@ export default defineComponent({
 </script>
 
 <style>
+h1 {
+  text-align: center;
+}
+strong {
+  color: #f95738;
+}
+
 header {
   padding: 1rem;
   background: #0d3b66;
