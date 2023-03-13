@@ -1,10 +1,10 @@
 <template>
-  <div class="box form">
+  <div class="box">
     <div class="columns">
       <div
         class="column is-5"
         role="form"
-        aria-label="formulario para criação de uma nova tarefa"
+        aria-label="Formulário para criação de uma nova tarefa"
       >
         <input
           type="text"
@@ -39,10 +39,12 @@
 import { computed, defineComponent } from "vue";
 import Temporizador from "./Temporizador.vue";
 import { useStore } from "vuex";
+
 import { key } from "@/store";
 
 export default defineComponent({
-  name: "FormularioItem",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Formulario",
   emits: ["aoSalvarTarefa"],
   components: {
     Temporizador,
@@ -72,9 +74,12 @@ export default defineComponent({
 });
 </script>
 
-<style>
-.form {
-  color: var(--text-primary);
+<style scoped>
+.button {
+  margin-left: 8px;
+}
+.box {
   background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 </style>
