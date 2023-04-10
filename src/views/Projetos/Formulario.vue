@@ -1,7 +1,5 @@
 <template>
-  <section class="projetos">
-    <h1 class="title">Formulario</h1>
-
+  <section>
     <form @submit.prevent="salvar">
       <div class="field">
         <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
@@ -78,8 +76,5 @@ main {
 main.modo-escuro {
   --bg-primary: #2b2d42;
   --text-primary: #ddd;
-}
-.projetos {
-  padding: 1.25rem;
 }
 </style>
