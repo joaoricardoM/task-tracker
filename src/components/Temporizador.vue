@@ -27,6 +27,7 @@ import Botao from "./Botao.vue";
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Temporizador",
+  emits: ["aoTemporizadorFinalizado"],
   components: {
     Cronometro,
     Botao,
@@ -40,16 +41,16 @@ export default defineComponent({
   },
   methods: {
     iniciar() {
-      // inicia a contagem
       this.cronometroRodando = true;
       this.cronometro = setInterval(() => {
         this.tempoEmSegundos += 1;
       }, 1000);
     },
     Finalizar() {
-      // termina a contagem
       this.cronometroRodando = false;
       clearInterval(this.cronometro);
+      this.$emit("aoTemporizadorFinalizado", this.tempoEmSegundos);
+      this.tempoEmSegundos;
     },
   },
 });
