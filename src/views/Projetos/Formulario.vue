@@ -18,9 +18,12 @@
 </template>
 
 <script lang="ts">
+import { TipoNotificacao } from "@/interface/INotificacao";
 import { useStore } from "@/store";
+import { ALTERA_PROJETO, ADICIONA_PROJETO } from "@/store/mutations";
 import { defineComponent } from "vue";
 // import Projetos from "../Projetos.vue";
+import { notificacaoMixin } from "@/mixins/Notificar";
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
@@ -30,6 +33,7 @@ export default defineComponent({
       type: String,
     },
   },
+  mixins: [notificacaoMixin],
   mounted() {
     if (this.id) {
       const projeto = this.store.state.projetos.find(
@@ -46,15 +50,20 @@ export default defineComponent({
   methods: {
     salvar() {
       if (this.id) {
-        this.store.commit("ALTERA_PROJETO", {
+        this.store.commit(ALTERA_PROJETO, {
           id: this.id,
           nome: this.nomeDoProjeto,
         });
       } else {
-        this.store.commit("ADICIONA_PROJETO", this.nomeDoProjeto);
+        this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
         //
       }
       this.nomeDoProjeto = "";
+      this.notificar(
+        TipoNotificacao.sucesso,
+        "Excelente",
+        "Um projeto foi cadastrado com sucesso"
+      );
       this.$router.push("/projetos");
     },
   },
