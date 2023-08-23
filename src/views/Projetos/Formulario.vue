@@ -17,7 +17,6 @@ import { TipoNotificacao } from "@/interface/INotificacao";
 import { useStore } from "@/store";
 import { ALTERA_PROJETO, ADICIONA_PROJETO } from "@/store/mutations";
 import { defineComponent } from 'vue';
-import { Store } from "vuex";
 import useNotificador from '../../hooks/notificador'
 
 export default defineComponent({
@@ -42,7 +41,7 @@ export default defineComponent({
     };
   },
   methods: {
-    salvar(this: Vue) {
+    salvar() {
       if (this.id) {
         this.store.commit(ALTERA_PROJETO, {
           id: this.id,
