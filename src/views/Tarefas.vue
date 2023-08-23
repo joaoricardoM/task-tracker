@@ -2,11 +2,7 @@
   <div class="column is-three-quarter conteudo">
     <FormularioItem @aoSalvarTarefa="salvarTarefa" />
     <div class="lista">
-      <Tarefa
-        v-for="(tarefa, index) in tarefas"
-        :key="index"
-        :tarefa="tarefa"
-      />
+      <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
       <Box v-if="semTarefas"> Você não está muito produtivo hoje ;( </Box>
     </div>
   </div>
@@ -52,6 +48,7 @@ export default defineComponent({
 .lista {
   padding: 1.25rem;
 }
+
 main {
   --bg-primary: #fff;
   --text-primary: #000;

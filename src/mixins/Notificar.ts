@@ -1,6 +1,6 @@
-import { TipoNotificacao } from "@/interface/INotificacao";
-import { NOTIFICAR } from "@/store/mutations";
-import { store } from "@/store";
+import { TipoNotificacao } from '@/interface/INotificacao'
+import { NOTIFICAR } from '@/store/mutations'
+import { store } from '@/store'
 
 export const notificacaoMixin = {
   methods: {
@@ -8,8 +8,8 @@ export const notificacaoMixin = {
       store.commit(NOTIFICAR, {
         titulo,
         texto,
-        tipo,
-      });
-    },
-  },
-};
+        tipo
+      })
+    }
+  }
+}

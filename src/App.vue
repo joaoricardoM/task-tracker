@@ -1,8 +1,5 @@
 <template>
-  <main
-    class="columns is-gapless is-multiline"
-    :class="{ 'modo-escuro': modoEscuroAtivo }"
-  >
+  <main class="columns is-gapless is-multiline" :class="{ 'modo-escuro': modoEscuroAtivo }">
     <div class="column is-one-quarter">
       <BarraLateral @alterarModo="trocarTema" />
     </div>
@@ -41,6 +38,7 @@ export default defineComponent({
 .lista {
   padding: 1.25rem;
 }
+
 main {
   --bg-primary: #fff;
   --text-primary: #000;

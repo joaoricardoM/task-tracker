@@ -3,12 +3,7 @@
     <form @submit.prevent="salvar">
       <div class="field">
         <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
-        <input
-          type="text"
-          class="input"
-          v-model="nomeDoProjeto"
-          id="nomeDoProjet"
-        />
+        <input type="text" class="input" v-model="nomeDoProjeto" id="nomeDoProjet" />
       </div>
       <div class="field">
         <button class="button" type="submit">Salvar</button>
@@ -21,9 +16,9 @@
 import { TipoNotificacao } from "@/interface/INotificacao";
 import { useStore } from "@/store";
 import { ALTERA_PROJETO, ADICIONA_PROJETO } from "@/store/mutations";
-import { defineComponent } from "vue";
-// import Projetos from "../Projetos.vue";
-import { notificacaoMixin } from "@/mixins/Notificar";
+import { defineComponent } from 'vue';
+import { Store } from "vuex";
+import useNotificador from '../../hooks/notificador'
 
 export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
@@ -33,7 +28,6 @@ export default defineComponent({
       type: String,
     },
   },
-  mixins: [notificacaoMixin],
   mounted() {
     if (this.id) {
       const projeto = this.store.state.projetos.find(
@@ -48,7 +42,7 @@ export default defineComponent({
     };
   },
   methods: {
-    salvar() {
+    salvar(this: Vue) {
       if (this.id) {
         this.store.commit(ALTERA_PROJETO, {
           id: this.id,
@@ -69,8 +63,10 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    const { notificar } = useNotificador()
     return {
       store,
+      notificar
     };
   },
 });
